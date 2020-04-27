@@ -1,8 +1,14 @@
 
-exports.up = function(knex) {
-  
+exports.up = async function(knex) {
+    await knex.schema.createTable("cars", (table) => {
+        table.increments("ID")
+        table.integer("VIN").notNull().unique()
+        table.text("Make").notNull()
+        table.text("Model").notNull()
+        table.decimal("Mileage").notNull()
+    })
 };
 
-exports.down = function(knex) {
-  
+exports.down = async function(knex) {
+    await knex.schema.dropTableIfExists("cars")
 };
