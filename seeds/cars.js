@@ -1,5 +1,5 @@
 
-exports.seed = function(knex) {
+exports.seed = async function(knex) {
   await knex("cars").truncate()
 
   // Insert some test data
